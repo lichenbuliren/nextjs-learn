@@ -1,17 +1,17 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
-import dayjs from 'dayjs'
+import Head from "next/head";
+import Link from "next/link";
+import Layout, { siteTitle } from "../components/layout";
+import utilStyles from "../styles/utils.module.css";
+import { getSortedPostsData } from "../lib/posts";
+import dayjs from "dayjs";
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+  const allPostsData = getSortedPostsData();
   return {
     props: {
-      allPostsData
-    }
-  }
+      allPostsData,
+    },
+  };
 }
 
 export default function Home({ allPostsData }) {
@@ -31,12 +31,12 @@ export default function Home({ allPostsData }) {
               <Link href={`/posts/${id}`}>{title}</Link>
               <br />
               <small className={utilStyles.lightText}>
-                {dayjs(date).format('MMMM d, YYYY')}
+                {dayjs(date).format("MMMM d, YYYY")}
               </small>
             </li>
           ))}
         </ul>
       </section>
     </Layout>
-  )
+  );
 }
